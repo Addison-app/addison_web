@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Addison</title>
+  <link rel="icon" href="images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/favicon/android-chrome-512.png">
+    <meta name="theme-color" content="#ffffff">
+
+  <style>
+    :root {
+      --app-red: #b71c1c;
+      --text-dark: #4b4b4b;
+      --text-muted: #8d8d8d;
+      --line: #eeeeee;
+      --white: #ffffff;
+      --secondary-app-red: #b71c1c;
+      --max-width: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--white);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow-y: scroll;
+      scrollbar-gutter: stable;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* HEADER (same as index) */
+    .header {
+      width: 100%;
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand img {
+      height: 84px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      border-radius: 999px;
+    }
+
+    .nav-link:hover {
+      color: var(--app-red);
+    }
+
+    /* ABOUT HERO */
+    .about-wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 4px 15px 30px;
+    }
+
+    .about-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 30px;
+    }
+    .about-top {
+    position: sticky;
+    top: 84px; /* same as header/logo area, adjust if needed */
+    z-index: 10;
+    background: var(--white);
+    padding-top: 4px;
+    padding-bottom: 12px;
+    }
+
+    .about-content {
+    padding-top: 8px;
+    }
+
+    /* TABS */
+    .about-tabs {
+      display: flex;
+      gap: 32px;
+      border-bottom: 2px solid var(--line);
+      margin-bottom: 40px;
+    }
+
+    .tab {
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding-bottom: 12px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .tab.active {
+      color: var(--secondary-app-red);
+    }
+
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 3px;
+      background: var(--secondary-app-red);
+    }
+
+    /* SECTION */
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    #contact-panel .about-section {
+    gap: 0px;
+    }
+
+    #contact-panel .about-art img {
+    max-width: 300px;
+    }
+
+    #contact-panel .about-text {
+    margin-left: -12px;
+    }
+
+    #mission-panel .about-art img {
+    margin-left: -96px;
+    }
+    #connect-panel .about-section {
+    grid-template-columns: 1fr;
+    }
+    #connect-panel .about-text {
+    text-align: center;
+    margin: 0 auto;
+    }
+    #connect-panel .connect-links {
+    align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+
+    .about-text p {
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .about-art {
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-art img {
+      max-width: 400px;
+    }
+    .about-tabs {
+    display: flex;
+    gap: 32px;
+    border-bottom: 2px solid var(--line);
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    }
+
+    .tab {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    outline: none;
+    padding: 0 0 12px;
+    margin: 0;
+    cursor: pointer;
+    position: relative;
+    font: inherit;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    }
+
+    .tab:hover {
+    color: var(--app-red);
+    }
+
+    .tab.active {
+    color: var(--secondary-app-red);
+    }
+
+    .tab.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 3px;
+    background: var(--secondary-app-red);
+    }
+
+    .tab-panel {
+    display: none;
+    }
+
+    .tab-panel.active {
+    display: block;
+    }
+
+    /* SECOND SECTION (reverse layout) */
+    .reverse {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .reverse .about-text {
+      order: 1;
+    }
+
+    .reverse .about-art {
+      order: 2;
+    }
+    .approach-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+    align-items: start;
+    text-align: center;
+    }
+
+    .step img {
+    width: 100%;
+    max-width: 275px;
+    margin: 0 auto 16px;
+    }
+
+    .step h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    }
+
+    .step h3 span {
+    color: var(--text-dark);
+    margin-right: 6px;
+    }
+
+    .red {
+    color: var(--app-red);
+    }
+
+    .step p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    max-width: 260px;
+    margin: 0 auto;
+    }
+
+    .team-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    }
+
+    .member {
+    border: 1.5px solid #ddd;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-dark);
+    background: #fafafa;
+    }
+
+    /* CEO highlight */
+    .member.ceo {
+    border: 2px solid var(--app-red);
+    background: #fff;
+    }
+
+    .member-name {
+    font-weight: 700;
+    }
+
+    .member-role {
+    color: var(--app-red);
+    font-weight: 700;
+    }
+
+    .connect-links {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    }
+
+    /* Bigger + card-like feel */
+    .connect-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+
+    font-size: 1.25rem;
+    font-weight: 800;
+
+    padding: 14px 18px;
+    border-radius: 12px;
+
+    color: var(--text-dark);
+    text-decoration: none;
+
+    border: 1.5px solid #e5e5e5;
+    background: #fafafa;
+
+    transition: all 0.2s ease;
+    }
+
+    /* Bigger icons */
+    .connect-item svg {
+    width: 28px;
+    height: 28px;
+    }
+
+    /* Hover = subtle but premium */
+    .connect-item:hover {
+    color: var(--app-red);
+    border-color: var(--app-red);
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    /* FOOTER */
+    .footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 20px;
+    margin-top: auto;
+    }
+
+    .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: nowrap;
+    }
+
+    .footer-left {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    }
+
+    .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    }
+
+    .footer-social {
+    display: flex;
+    gap: 16px;
+    }
+
+    .footer-social a {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+    }
+
+    .footer-social a:hover {
+    color: var(--app-red);
+    }
+
+    .footer-links {
+    display: flex;
+    gap: 24px;
+    }
+
+    .footer-links a {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+    color: var(--app-red);
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .about-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .reverse .about-text,
+      .reverse .about-art {
+        order: unset;
+      }
+      .approach-steps {
+            grid-template-columns: 1fr;
+            gap: 32px;
+      }
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    function activateTab(tab) {
+      const target = tab.dataset.tab;
+
+      tabs.forEach((item) => {
+        const isActive = item === tab;
+        item.classList.toggle('active', isActive);
+        item.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      panels.forEach((panel) => {
+        const isActive = panel.id === `${target}-panel`;
+        panel.classList.toggle('active', isActive);
+        panel.hidden = !isActive;
+      });
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateTab(tab));
+
+      tab.addEventListener('keydown', (event) => {
+        let nextIndex = index;
+
+        if (event.key === 'ArrowRight') {
+          nextIndex = (index + 1) % tabs.length;
+        } else if (event.key === 'ArrowLeft') {
+          nextIndex = (index - 1 + tabs.length) % tabs.length;
+        } else {
+          return;
+        }
+
+        event.preventDefault();
+        tabs[nextIndex].focus();
+        activateTab(tabs[nextIndex]);
+      });
+    });
+  });
+</script>
+
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img src="images/title.webp" alt="Addison" />
+      </a>
+
+      <nav class="nav">
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="resources.html">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+    <main class="about-wrap">
+        <div class="about-top">
+
+        <h1 class="about-title">About Us</h1>
+
+        <div class="about-tabs" role="tablist" aria-label="About sections">
+            <button class="tab active" role="tab" aria-selected="true" aria-controls="mission-panel" id="mission-tab" data-tab="mission" type="button">Mission</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="approach-panel" id="approach-tab" data-tab="approach" type="button">Approach</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="team-panel" id="team-tab" data-tab="team" type="button">Team</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="connect-panel" id="connect-tab" data-tab="connect" type="button">Connect</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="contact-panel" id="contact-tab" data-tab="contact" type="button">Contact</button>
+        </div>
+        </div>
+
+    <section class="tab-panel active" id="mission-panel" role="tabpanel" aria-labelledby="mission-tab">
+        <div class="about-section">
+        <div class="about-art">
+            <img src="images/cluster2.webp" alt="Mission illustration">
+        </div>
+        <div class="about-text">
+            <h2>Small Steps Big Wins In A Busy World.</h2>
+            <p>
+            Many people who struggle with executive function often find traditional to-do lists overwhelming because they don’t know where to start. This leads to procrastination, a snowball effect of unfinished tasks, and increased stress.
+            </p>
+            <p>
+            Addison helps you <strong><em>plan</em></strong>, <strong><em>focus</em></strong>, and <strong><em>follow through</em></strong> by giving you tools
+            that support your executive function in real time.
+            </p>
+        </div>
+        </div>
+    </section>
+
+    <section class="tab-panel" id="approach-panel" role="tabpanel" aria-labelledby="approach-tab" hidden>
+        <div class="about-section reverse">
+        <div class="about-text">
+            <h2>How Addison Makes Your Life Easier.</h2>
+            <p>
+            Productivity can be overwhelming, especially if you have ADHD.<br> 
+            Addison breaks it down so you can take your tasks one step at a time.
+            </p>
+        </div>
+        <div class="about-art">
+            <img src="images/cluster.webp" alt="Approach illustration">
+        </div>
+        
+        </div>
+        <div class="approach-steps">
+
+            <div class="step">
+                <img src="images/phone1.webp" alt="Dump tasks">
+                <h3><span>1.</span> <strong class="red">Dump it!</strong></h3>
+                <p>Write it all down so you don't forget to do it.</p>
+            </div>
+
+            <div class="step">
+                <img src="images/phone2.webp" alt="Focus now">
+                <h3><span>2.</span> Focus on <strong class="red">Now!</strong></h3>
+                <p>Focus on one thing at a time instead of everything you have to do ever.</p>
+            </div>
+
+            <div class="step">
+                <img src="images/phone3.webp" alt="Keep moving">
+                <h3><span>3.</span> <strong class="red">Keep Moving Forward</strong></h3>
+                <p>If you get stuck, Addison helps you break down tasks into manageable steps.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="tab-panel" id="team-panel" role="tabpanel" aria-labelledby="team-tab" hidden>
+        <div class="about-section">
+        <div class="team-grid">
+
+            <div class="member ceo">
+            <div class="member-name">
+                E. Danielle Malingue, <span class="member-role">CEO</span>
+            </div>
+            </div>
+
+            <div class="member">Maia Nkonabang</div>
+            <div class="member">Dylan Gatua</div>
+            <div class="member">Rebecca Lole</div>
+            <div class="member">Andrea Ongomefen</div>
+            <div class="member">Kyra Godoy</div>
+
+        </div>
+        <div class="about-text">
+            <h2>Built with care.</h2>
+            <p>
+            Our team is focused on designing tools that feel calm, useful, and supportive.
+            </p>
+            <p>
+            We care about thoughtful product design, accessibility, and creating systems
+            that meet people where they are.
+            </p>
+        </div>
+        </div>
+    </section>
+
+    <section class="tab-panel" id="connect-panel" role="tabpanel" aria-labelledby="connect-tab" hidden>
+    <div class="about-section reverse">
+
+        <div class="about-text">
+        <h2>Connect with us here</h2>
+
+        <div class="connect-links">
+
+            <a href="https://www.instagram.com/myaddisonapp" target="_blank" class="connect-item">
+            <!-- Instagram icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <circle cx="17.5" cy="6.5" r="1.5"></circle>
+            </svg>
+            Instagram
+            </a>
+
+            <a href="https://www.tiktok.com/@myaddisonapp" target="_blank" class="connect-item">
+            <!-- TikTok icon -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+            </svg>
+            TikTok
+            </a>
+
+        </div>
+        </div>
+
+    </div>
+    </section>
+
+    <section class="tab-panel" id="contact-panel" role="tabpanel" aria-labelledby="contact-tab" hidden>
+        <div class="about-section">
+        <div class="about-art">
+            <img src="images/single.webp" alt="Contact illustration">
+        </div>
+        <div class="about-text">
+            <h2>Get in touch.</h2>
+            <p>
+            Have a question, partnership idea, or press inquiry? We would love to hear from you.
+            </p>
+            <p>
+            Email us at <a href="mailto:hello@myaddison.app">hello@myaddison.app</a><br>
+            Visit <a href="https://www.myaddison.app" target="_blank" rel="noopener noreferrer">www.myaddison.app</a>
+            </p>
+        </div>
+        </div>
+    </section>
+
+    </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          © 2025-2026 myaddisonapp. All rights reserved
+        </div>
+        <div class="footer-right">
+          <div class="footer-social">
+            <a href="https://www.instagram.com/myaddisonapp" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <circle cx="17.5" cy="6.5" r="1.5"></circle>
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@myaddisonapp" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="footer-links">
+            <a href="terms.html">Terms of Use</a>
+            <a href="privacy.html">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+</div>
+</body>
+</html>

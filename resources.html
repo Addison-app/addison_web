@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources - Addison</title>
+  <link rel="icon" href="images/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-chrome-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/favicon/android-chrome-512.png">
+    <meta name="theme-color" content="#ffffff">
+
+  <style>
+    :root {
+      --app-red: #b71c1c;
+      --text-dark: #4b4b4b;
+      --text-muted: #8d8d8d;
+      --line: #eeeeee;
+      --white: #ffffff;
+      --max-width: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--white);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* HEADER (same as about) */
+    .header {
+      width: 100%;
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand img {
+      height: 84px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      border-radius: 999px;
+    }
+
+    .nav-link:hover {
+      color: var(--app-red);
+    }
+
+    /* MAIN */
+    .resources-wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 4px 15px 30px;
+    }
+
+    .resources-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .resources-sub {
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    /* RESOURCE CARDS */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .resource-card {
+      border: 1.5px solid #e5e5e5;
+      border-radius: 14px;
+      padding: 20px;
+      background: #fafafa;
+      transition: all 0.2s ease;
+    }
+
+    .resource-card:hover {
+      border-color: var(--app-red);
+      background: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    .resource-title {
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+
+    .resource-desc {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .resource-link {
+      font-weight: 700;
+      color: var(--app-red);
+    }
+
+    /* FOOTER (same as about) */
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 20px;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-left {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-social a {
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img src="images/title.webp" alt="Addison" />
+      </a>
+
+      <nav class="nav">
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="resources.html">Resources</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="resources-wrap">
+
+    <h1 class="resources-title">Resources</h1>
+    <p class="resources-sub">
+      If you or someone you know needs support, these free and accessible resources are available.
+    </p>
+
+    <div class="resources-grid">
+
+      <div class="resource-card">
+        <div class="resource-title">988 Suicide & Crisis Lifeline</div>
+        <div class="resource-desc">
+          Free, confidential support 24/7 for people in distress in the U.S.
+        </div>
+        <a href="https://988lifeline.org" target="_blank" class="resource-link">Visit →</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-title">Crisis Text Line</div>
+        <div class="resource-desc">
+          Text HOME to 741741 to connect with a trained crisis counselor anytime.
+        </div>
+        <a href="https://www.crisistextline.org" target="_blank" class="resource-link">Visit →</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-title">SAMHSA Helpline</div>
+        <div class="resource-desc">
+          1-800-662-HELP (4357) — free, confidential mental health and substance use support.
+        </div>
+        <a href="https://www.samhsa.gov/find-help/national-helpline" target="_blank" class="resource-link">Visit →</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-title">NAMI HelpLine</div>
+        <div class="resource-desc">
+          Mental health support, resources, and guidance from trained specialists.
+        </div>
+        <a href="https://www.nami.org/help" target="_blank" class="resource-link">Visit →</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-title">7 Cups (Free Support)</div>
+        <div class="resource-desc">
+          Free anonymous chat with trained listeners for emotional support.
+        </div>
+        <a href="https://www.7cups.com" target="_blank" class="resource-link">Visit →</a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-left">
+          © 2025-2026 myaddisonapp. All rights reserved
+        </div>
+        <div class="footer-right">
+          <div class="footer-social">
+            <a href="https://www.instagram.com/myaddisonapp" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <circle cx="17.5" cy="6.5" r="1.5"></circle>
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/@myaddisonapp" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="footer-links">
+            <a href="terms.html">Terms of Use</a>
+            <a href="privacy.html">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+</div>
+</body>
+</html>
