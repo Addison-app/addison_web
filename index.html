@@ -205,10 +205,17 @@
     background: var(--app-red-hover);
     }
 
+    .badge-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    }
+
     .app-store-badge-link {
     display: flex;
-    justify-content: center;
-    margin-top: 16px;
     }
 
     .app-store-badge {
@@ -218,8 +225,6 @@
 
     .google-play-badge-link {
     display: flex;
-    justify-content: center;
-    margin-top: 12px;
     cursor: pointer;
     background: none;
     border: none;
@@ -492,12 +497,14 @@
             <a class="btn btn-primary" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
               Download on Mobile
             </a>
-            <a href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer" class="app-store-badge-link">
-              <img src="images/app-store-badge.svg" alt="Download on the App Store" class="app-store-badge" />
-            </a>
-            <button class="google-play-badge-link" onclick="document.getElementById('androidModal').classList.add('active')" aria-label="Android coming soon">
-              <img src="images/google-play-badge.svg" alt="Get it on Google Play" class="google-play-badge" />
-            </button>
+            <div class="badge-row">
+              <a href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer" class="app-store-badge-link">
+                <img src="images/app-store-badge.svg" alt="Download on the App Store" class="app-store-badge" />
+              </a>
+              <button class="google-play-badge-link" onclick="document.getElementById('androidModal').classList.add('active')" aria-label="Android coming soon">
+                <img src="images/google-play-badge.svg" alt="Get it on Google Play" class="google-play-badge" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
