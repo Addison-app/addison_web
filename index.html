@@ -216,6 +216,125 @@
     width: auto;
     }
 
+    .google-play-badge-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    }
+
+    .google-play-badge {
+    height: 48px;
+    width: auto;
+    }
+
+    /* COMING SOON MODAL */
+    .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .modal-overlay.active {
+    display: flex;
+    }
+
+    .modal {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 36px 32px 32px;
+    width: min(90vw, 400px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+    position: relative;
+    text-align: center;
+    }
+
+    .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+    }
+
+    .modal-close:hover {
+    color: var(--text-dark);
+    }
+
+    .modal h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 8px;
+    }
+
+    .modal p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0 0 22px;
+    }
+
+    .modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    }
+
+    .modal-form input[type="email"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    outline: none;
+    font-family: inherit;
+    color: var(--text-dark);
+    transition: border-color 0.2s;
+    }
+
+    .modal-form input[type="email"]:focus {
+    border-color: var(--app-red);
+    }
+
+    .modal-form button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: var(--app-red);
+    color: white;
+    font-weight: 800;
+    font-size: 0.95rem;
+    font-family: inherit;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.2s;
+    }
+
+    .modal-form button:hover {
+    background: var(--app-red-hover);
+    }
+
+    .modal-success {
+    display: none;
+    font-size: 0.95rem;
+    color: var(--app-red);
+    font-weight: 700;
+    margin-top: 8px;
+    }
+
     /* FOOTER */
     .footer {
     border-top: 1px solid var(--line);
@@ -376,6 +495,9 @@
             <a href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer" class="app-store-badge-link">
               <img src="images/app-store-badge.svg" alt="Download on the App Store" class="app-store-badge" />
             </a>
+            <button class="google-play-badge-link" onclick="document.getElementById('androidModal').classList.add('active')" aria-label="Android coming soon">
+              <img src="images/google-play-badge.svg" alt="Get it on Google Play" class="google-play-badge" />
+            </button>
           </div>
         </div>
       </section>
@@ -410,9 +532,23 @@
       </div>
     </footer>
   </div>
+  <!-- Android Coming Soon Modal -->
+  <div class="modal-overlay" id="androidModal" role="dialog" aria-modal="true" aria-labelledby="androidModalTitle">
+    <div class="modal">
+      <button class="modal-close" onclick="closeAndroidModal()" aria-label="Close">&times;</button>
+      <h2 id="androidModalTitle">Coming Soon to Android</h2>
+      <p>We're working on it! Drop your email and we'll notify you the moment Addison hits Google Play.</p>
+      <form class="modal-form" onsubmit="handleAndroidSignup(event)">
+        <input type="email" id="androidEmail" placeholder="Your email address" required autocomplete="email" />
+        <button type="submit">Notify Me</button>
+      </form>
+      <p class="modal-success" id="androidSuccess">You're on the list! We'll be in touch.</p>
+    </div>
+  </div>
+
   <script>
     const header = document.querySelector('.header');
-    
+
     window.addEventListener('scroll', () => {
       if (window.scrollY > 0) {
         header.classList.add('scrolled');
@@ -420,6 +556,46 @@
         header.classList.remove('scrolled');
       }
     });
+
+    function closeAndroidModal() {
+      document.getElementById('androidModal').classList.remove('active');
+      document.getElementById('androidEmail').value = '';
+      document.getElementById('androidSuccess').style.display = 'none';
+      document.querySelector('#androidModal .modal-form').style.display = 'flex';
+    }
+
+    document.getElementById('androidModal').addEventListener('click', function(e) {
+      if (e.target === this) closeAndroidModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeAndroidModal();
+    });
+
+    async function handleAndroidSignup(e) {
+      e.preventDefault();
+      const email = document.getElementById('androidEmail').value;
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = '...';
+
+      const body = new URLSearchParams();
+      body.append('fields[email]', email);
+      body.append('ml-submit', '1');
+      body.append('anticsrf', 'true');
+
+      try {
+        await fetch('https://assets.mailerlite.com/jsonp/1656048/forms/190036657738613855/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body.toString()
+        });
+      } catch (_) {}
+
+      gtag('event', 'android_waitlist_signup');
+      document.querySelector('#androidModal .modal-form').style.display = 'none';
+      document.getElementById('androidSuccess').style.display = 'block';
+    }
   </script>
 </body>
 </html>
