@@ -182,6 +182,160 @@
     align-items: center;
     }
 
+    /* CONTACT */
+    .contact-wrap {
+    max-width: 1040px;
+    }
+
+    .contact-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--app-red);
+    background: #fdecec;
+    padding: 8px 16px;
+    border-radius: 999px;
+    }
+
+    .contact-heading {
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 20px 0 12px;
+    }
+
+    .contact-sub {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin: 0 0 44px;
+    }
+
+    .contact-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 28px;
+    align-items: start;
+    }
+
+    .contact-info {
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-info-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    }
+
+    .contact-info-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--app-red);
+    word-break: break-word;
+    }
+
+    .contact-info-note {
+    margin-top: 18px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    }
+
+    .contact-form {
+    background: var(--white);
+    border: 1.5px solid var(--line);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    }
+
+    .contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--text-dark);
+    font-size: 0.92rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+    font: inherit;
+    font-weight: 500;
+    color: var(--text-dark);
+    padding: 14px 16px;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    background: #fafafa;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+    color: #b3b3b3;
+    font-weight: 400;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+    border-color: var(--app-red);
+    box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.12);
+    background: var(--white);
+    }
+
+    .contact-form textarea {
+    min-height: 140px;
+    resize: vertical;
+    }
+
+    .contact-send {
+    margin-top: 4px;
+    border: none;
+    background: var(--app-red);
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.95rem;
+    padding: 16px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .contact-send:hover {
+    background: #d32f2f;
+    transform: translateY(-1px);
+    }
+
+    .contact-success {
+    display: none;
+    margin-top: 4px;
+    color: #2E7D14;
+    font-weight: 700;
+    }
+
+    @media (max-width: 760px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    }
+
     .about-text h2 {
       font-size: 1.8rem;
       margin-bottom: 16px;
@@ -752,20 +906,38 @@
     </section>
 
     <section class="tab-panel" id="contact-panel" role="tabpanel" aria-labelledby="contact-tab" hidden>
-        <div class="about-section">
-        <div class="about-art">
-            <img src="images/single.webp" alt="Contact illustration">
-        </div>
-        <div class="about-text">
-            <h2>Get in touch.</h2>
-            <p>
-            Have a question, partnership idea, or press inquiry? We would love to hear from you.
+        <div class="contact-wrap">
+            <span class="contact-eyebrow">Get in touch</span>
+            <h2 class="contact-heading">Drop us a line.</h2>
+            <p class="contact-sub">
+                Questions, feedback, or ideas you want to share? Tell us what's on your mind
+                and a real person on the Addison team will write back.
             </p>
-            <p>
-            Email us at <a href="mailto:hello@myaddison.app">hello@myaddison.app</a><br>
-            Visit <a href="https://www.myaddison.app" target="_blank" rel="noopener noreferrer">www.myaddison.app</a>
-            </p>
-        </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-info-label">Email</div>
+                    <a class="contact-info-value" href="mailto:myaddisonapp@gmail.com">myaddisonapp@gmail.com</a>
+                    <p class="contact-info-note">Prefer email? Reach out directly and we'll get back to you as soon as we can.</p>
+                </div>
+
+                <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+                    <label>
+                        Your name
+                        <input type="text" id="contactName" placeholder="What should we call you?" required>
+                    </label>
+                    <label>
+                        Email
+                        <input type="email" id="contactEmail" placeholder="you@example.com" required autocomplete="email">
+                    </label>
+                    <label>
+                        Message
+                        <textarea id="contactMessage" placeholder="Tell us what's on your mind…" required></textarea>
+                    </label>
+                    <button type="submit" class="contact-send">Send message</button>
+                    <p class="contact-success" id="contactSuccess">Thanks! Your email app should open with your message ready to send.</p>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -802,5 +974,18 @@
     </footer>
 
 </div>
+
+<script>
+  function handleContactSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    const message = document.getElementById('contactMessage').value.trim();
+    const subject = encodeURIComponent('Hello from ' + (name || 'the website'));
+    const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+    window.location.href = 'mailto:myaddisonapp@gmail.com?subject=' + subject + '&body=' + body;
+    document.getElementById('contactSuccess').style.display = 'block';
+  }
+</script>
 </body>
 </html>
