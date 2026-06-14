@@ -137,14 +137,19 @@
     width: 100%;
     max-width: var(--max-width);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.35fr 0.65fr;
     gap: 48px;
-    padding: 0;
-    margin: 0;
+    padding: 0 32px;
+    margin: 0 auto;
     }
 
-    /* LEFT IMAGE (unchanged per your constraint) */
+    /* Copy on the left, art on the right */
+    .hero-copy {
+    order: 1;
+    }
+
     .hero-art {
+    order: 2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -166,15 +171,33 @@
     text-align: center;
     height: 100%;
     gap: 16px;
+    animation: heroFloatIn 1.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes heroFloatIn {
+    from {
+        opacity: 0;
+        transform: translateY(36px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+    .hero-copy {
+        animation: none;
+    }
     }
 
     .headline {
     margin: 0;
-    max-width: 560px;
+    max-width: 760px;
     color: var(--text-dark);
-    font-size: clamp(1.33rem, 4vw, 2.26667rem);
+    font-size: clamp(1.7rem, 5vw, 3rem);
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.05;
     }
 
     .subcopy {
@@ -213,6 +236,7 @@
     /* CTA */
     .cta-group {
     width: min(100%, 360px);
+    margin-top: 24px;
     }
 
     .btn {
@@ -239,7 +263,7 @@
     justify-content: center;
     align-items: center;
     gap: 12px;
-    margin-top: 32px;
+    margin-top: 48px;
     }
 
     .app-store-badge-link {
@@ -730,6 +754,15 @@
         gap: 0;
     }
 
+    /* Keep original stacking on mobile: art first, copy below */
+    .hero-art {
+        order: 1;
+    }
+
+    .hero-copy {
+        order: 2;
+    }
+
     .hero-art-inner {
         width: min(100%, 350px);
     }
@@ -849,7 +882,7 @@
         <div class="stories-list">
 
           <!-- Dump It Out — golden yellow -->
-          <article class="story-card" style="--card-bg:#F4C20D; --title-color:#A07A00;">
+          <article class="story-card" style="--card-bg:#F4C20D;">
             <div class="story-media">
               <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
                 <img src="images/story-dump-it-out.jpg" alt="Dump It Out: capture every task in one clear list" loading="lazy" />
@@ -891,7 +924,7 @@
           </article>
 
           <!-- Fast Prioritization — lime green -->
-          <article class="story-card" style="--card-bg:#A6C44A; --title-color:#5E7A1E;">
+          <article class="story-card" style="--card-bg:#A6C44A;">
             <div class="story-media">
               <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
                 <img src="images/story-fast-prioritization.jpg" alt="Fast Prioritization: sort tasks by deadline or quick wins" loading="lazy" />
@@ -975,7 +1008,7 @@
           </article>
 
           <!-- Know Your Stats — sky blue -->
-          <article class="story-card" style="--card-bg:#5BB7E5; --title-color:#1F86B8;">
+          <article class="story-card" style="--card-bg:#5BB7E5;">
             <div class="story-media">
               <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
                 <img src="images/story-know-your-stats.jpg" alt="Know Your Stats: track streaks and progress" loading="lazy" />
@@ -1208,7 +1241,9 @@
     (function () {
       const el = document.getElementById('typedWord');
       if (!el) return;
+      const cursor = document.querySelector('.subheadline-cursor');
       const words = ['simple.', 'fast.', 'easy.'];
+      const colors = ['#b71c1c', '#5BB7E5', '#2E7D14']; // simple=red, fast=sky blue, easy=dark green
       const typeSpeed = 90;
       const backSpeed = 55;
       const holdAfterType = 1400;
@@ -1219,6 +1254,8 @@
 
       function tick() {
         const current = words[wordIndex];
+        el.style.color = colors[wordIndex];
+        if (cursor) cursor.style.background = colors[wordIndex];
         if (!deleting) {
           charIndex++;
           el.textContent = current.slice(0, charIndex);
