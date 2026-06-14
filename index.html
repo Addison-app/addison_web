@@ -39,6 +39,9 @@
     html, body {
     margin: 0;
     padding: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden; /* stop sideways swipe/scroll on mobile */
     background: var(--white);
     font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
@@ -365,6 +368,137 @@
     margin-top: 8px;
     }
 
+    /* STORIES SECTION — feature screenshots */
+    .stories-section {
+    padding: 96px 0 112px;
+    background: var(--white);
+    }
+
+    .stories-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    }
+
+    .stories-heading {
+    text-align: center;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0;
+    }
+
+    .stories-sub {
+    text-align: center;
+    color: #666;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin: 16px 0 0;
+    }
+
+    .stories-list {
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    }
+
+    .story-card {
+    background: var(--card-bg);
+    color: var(--card-text);
+    border-radius: 28px;
+    padding: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 56px;
+    }
+
+    /* Alternate image side for rhythm */
+    .story-card:nth-child(even) .story-media {
+    order: 2;
+    }
+
+    .story-media {
+    display: flex;
+    justify-content: center;
+    }
+
+    .story-media img {
+    width: min(100%, 300px);
+    height: auto;
+    border-radius: 20px;
+    }
+
+    .story-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    }
+
+    .story-text h3 {
+    margin: 0;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 800;
+    line-height: 1.1;
+    }
+
+    .story-text p {
+    margin: 0;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.6;
+    opacity: 0.92;
+    }
+
+    .story-keywords {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    }
+
+    .story-keywords li {
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    /* Light-background cards need darker chips */
+    .story-card.is-light .story-keywords li {
+    background: rgba(0, 0, 0, 0.07);
+    border-color: rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 820px) {
+    .stories-section {
+        padding: 64px 0 80px;
+    }
+
+    .stories-list {
+        margin-top: 48px;
+        gap: 36px;
+    }
+
+    .story-card {
+        grid-template-columns: 1fr;
+        padding: 40px 28px;
+        gap: 32px;
+        text-align: center;
+    }
+
+    .story-card:nth-child(even) .story-media {
+        order: 0;
+    }
+
+    .story-keywords {
+        justify-content: center;
+    }
+    }
+
     /* FEATURES SECTION */
     .features-section {
     padding: 80px 0 60px;
@@ -600,13 +734,23 @@
         width: min(100%, 280px);
     }
 
+    .footer-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        gap: 16px;
+    }
+
     .footer-left {
-        white-space: nowrap;
+        white-space: normal;
         font-size: 0.75rem;
+        flex-basis: 100%;
     }
 
     .footer-links {
         gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .footer-links a {
@@ -669,6 +813,143 @@
         </div>
       </section>
     </main>
+
+    <section class="stories-section">
+      <div class="stories-inner">
+        <h2 class="stories-heading">How Addison helps you get unstuck</h2>
+        <p class="stories-sub">From overwhelmed to done — one small step at a time.</p>
+
+        <div class="stories-list">
+
+          <!-- Dump It Out — golden yellow -->
+          <article class="story-card is-light" style="--card-bg:#F4C20D; --card-text:#1f1500;">
+            <div class="story-media">
+              <img src="images/story-dump-it-out.jpg" alt="Dump It Out — capture every task in one clear list" loading="lazy" />
+            </div>
+            <div class="story-text">
+              <h3>Dump It Out</h3>
+              <p>Get every task out of your head and into one trusted list. No more mental clutter or forgotten to-dos — capture it all in seconds.</p>
+              <ul class="story-keywords">
+                <li>brain dump</li>
+                <li>overwhelmed</li>
+                <li>can't remember tasks</li>
+                <li>mental clutter</li>
+                <li>ADHD to-do list</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Break It Down — green -->
+          <article class="story-card" style="--card-bg:#3C8C1E; --card-text:#ffffff;">
+            <div class="story-media">
+              <img src="images/story-break-it-down.jpg" alt="Break It Down — split big tasks into small subtasks" loading="lazy" />
+            </div>
+            <div class="story-text">
+              <h3>Break It Down</h3>
+              <p>Big tasks feel impossible. Addison splits them into small, doable subtasks with time estimates, so you always know your very next move.</p>
+              <ul class="story-keywords">
+                <li>task paralysis</li>
+                <li>where do I start</li>
+                <li>break tasks down</li>
+                <li>executive dysfunction</li>
+                <li>feeling stuck</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Fast Prioritization — lime green -->
+          <article class="story-card is-light" style="--card-bg:#A6C44A; --card-text:#1c2400;">
+            <div class="story-media">
+              <img src="images/story-fast-prioritization.jpg" alt="Fast Prioritization — sort tasks by deadline or quick wins" loading="lazy" />
+            </div>
+            <div class="story-text">
+              <h3>Fast Prioritization</h3>
+              <p>Not sure what to do first? Switch modes and let Addison sort your list by deadline, energy, or quick wins — no more staring at a wall of tasks.</p>
+              <ul class="story-keywords">
+                <li>what should I do first</li>
+                <li>prioritize tasks</li>
+                <li>decision paralysis</li>
+                <li>too many tasks</li>
+                <li>can't decide</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- One Task — red -->
+          <article class="story-card" style="--card-bg:#C0392B; --card-text:#ffffff;">
+            <div class="story-media">
+              <img src="images/story-one-task.jpg" alt="One Task — focus on a single task with a timer" loading="lazy" />
+            </div>
+            <div class="story-text">
+              <h3>One Task</h3>
+              <p>See just one task at a time, with a built-in timer and gentle nudges. Less overwhelm, more done — the rest can wait.</p>
+              <ul class="story-keywords">
+                <li>focus on one thing</li>
+                <li>procrastination</li>
+                <li>can't get started</li>
+                <li>overwhelmed</li>
+                <li>ADHD focus</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Block Distractions — orange -->
+          <article class="story-card is-light" style="--card-bg:#EFA323; --card-text:#241500;">
+            <div class="story-media">
+              <img src="images/story-block-distractions.jpg" alt="Block Distractions — Focus Mode to stay locked in" loading="lazy" />
+            </div>
+            <div class="story-text">
+              <h3>Block Distractions</h3>
+              <p>Turn on Focus Mode to quiet the noise and stay locked in on what matters right now. One task on screen, nothing pulling you away.</p>
+              <ul class="story-keywords">
+                <li>can't focus</li>
+                <li>easily distracted</li>
+                <li>focus mode</li>
+                <li>stop procrastinating</li>
+                <li>attention</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Remove Barriers — purple -->
+          <article class="story-card" style="--card-bg:#7A2FE0; --card-text:#ffffff;">
+            <div class="story-media">
+              <img src="images/story-remove-barriers.jpg" alt="Remove Barriers — set priority, difficulty and duration" loading="lazy" />
+            </div>
+            <div class="story-text">
+              <h3>Remove Barriers</h3>
+              <p>Set priority, difficulty, and duration so starting feels easy. Addison strips away the friction that keeps you stuck before you even begin.</p>
+              <ul class="story-keywords">
+                <li>can't get started</li>
+                <li>task initiation</li>
+                <li>motivation</li>
+                <li>procrastination</li>
+                <li>executive function</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Know Your Stats — sky blue -->
+          <article class="story-card is-light" style="--card-bg:#5BB7E5; --card-text:#06243a;">
+            <div class="story-media">
+              <img src="images/story-know-your-stats.jpg" alt="Know Your Stats — track streaks and progress" loading="lazy" />
+            </div>
+            <div class="story-text">
+              <h3>Know Your Stats</h3>
+              <p>Watch your streaks and wins add up. Real progress you can see keeps the momentum going on the hard days.</p>
+              <ul class="story-keywords">
+                <li>build habits</li>
+                <li>stay consistent</li>
+                <li>track progress</li>
+                <li>motivation</li>
+                <li>streaks</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
 
     <!-- Toggle this section on/off via SHOW_HOW_IT_WORKS in the script below -->
     <section class="features-section section-hidden" id="howItWorks">
