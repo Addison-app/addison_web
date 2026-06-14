@@ -182,6 +182,25 @@
       line-height: 1.3;
     }
 
+    .subheadline-word {
+      color: var(--app-red);
+    }
+
+    .subheadline-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      margin-left: 2px;
+      background: var(--app-red);
+      vertical-align: text-bottom;
+      animation: blinkCursor 1s step-end infinite;
+    }
+
+    @keyframes blinkCursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
     /* CTA */
     .cta-group {
     width: min(100%, 360px);
@@ -211,7 +230,7 @@
     justify-content: center;
     align-items: center;
     gap: 12px;
-    margin-top: 16px;
+    margin-top: 32px;
     }
 
     .app-store-badge-link {
@@ -338,6 +357,141 @@
     color: var(--app-red);
     font-weight: 700;
     margin-top: 8px;
+    }
+
+    /* FEATURES SECTION */
+    .features-section {
+    padding: 80px 0 60px;
+    background: #f7f7f7;
+    }
+
+    .features-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    }
+
+    .features-heading {
+    text-align: center;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 10px;
+    }
+
+    .features-sub {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin: 0 0 48px;
+    }
+
+    .features-track {
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 0 4px 24px;
+    -webkit-overflow-scrolling: touch;
+    }
+
+    .features-track::-webkit-scrollbar {
+    display: none;
+    }
+
+    .feat-card {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: min(calc(100vw - 64px), 300px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    }
+
+    .phone-wrap {
+    position: relative;
+    width: 210px;
+    flex-shrink: 0;
+    }
+
+    .phone-frame {
+    width: 210px;
+    height: 455px;
+    background: #111;
+    border-radius: 40px;
+    border: 10px solid #1c1c1e;
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,0.07),
+      0 30px 70px rgba(0,0,0,0.22),
+      0 8px 20px rgba(0,0,0,0.12);
+    overflow: hidden;
+    }
+
+    .phone-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    }
+
+    .feat-bunny {
+    position: absolute;
+    bottom: -24px;
+    left: -52px;
+    width: 96px;
+    height: auto;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.12));
+    pointer-events: none;
+    }
+
+    .feat-bunny--right {
+    left: auto;
+    right: -52px;
+    }
+
+    .feat-text {
+    text-align: center;
+    padding: 12px 4px 0;
+    }
+
+    .feat-text h3 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 8px;
+    }
+
+    .feat-text p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin: 0;
+    }
+
+    .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 32px;
+    }
+
+    .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ddd;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s;
+    }
+
+    .dot.active {
+    background: var(--app-red);
+    transform: scale(1.25);
     }
 
     /* FOOTER */
@@ -490,7 +644,7 @@
 
         <div class="hero-copy">
           <h1 class="headline">Your clear to-do list that helps you plan, focus, and follow through.</h1>
-          <h2 class="subheadline">Executive function made simple.</h2>
+          <h2 class="subheadline">Executive function made <span class="subheadline-word" id="typedWord"></span><span class="subheadline-cursor" aria-hidden="true"></span></h2>
           <p class="subcopy"> Get started in seconds.</p>
 
           <div class="cta-group">
@@ -509,6 +663,104 @@
         </div>
       </section>
     </main>
+
+    <section class="features-section">
+      <div class="features-inner">
+        <h2 class="features-heading">See how it works</h2>
+        <p class="features-sub">Built for brains that work a little differently.</p>
+
+        <div class="features-track" id="featuresTrack">
+
+          <article class="feat-card">
+            <div class="phone-wrap">
+              <div class="phone-frame">
+                <img src="images/feat-tasklist.png" alt="Addison task list" loading="lazy" />
+              </div>
+              <img class="feat-bunny" src="images/bunnypointingforward.png" alt="" aria-hidden="true" />
+            </div>
+            <div class="feat-text">
+              <h3>Your tasks, front and center</h3>
+              <p>Everything you need to do, in one clear list. See what's done and what's next — no digging, no chaos.</p>
+            </div>
+          </article>
+
+          <article class="feat-card">
+            <div class="phone-wrap">
+              <div class="phone-frame">
+                <img src="images/feat-smartmode.png" alt="Smart Mode" loading="lazy" />
+              </div>
+              <img class="feat-bunny feat-bunny--right" src="images/dancingbunny.png" alt="" aria-hidden="true" />
+            </div>
+            <div class="feat-text">
+              <h3>Smart Mode picks what's next</h3>
+              <p>Can't decide where to start? Smart Mode reads your tasks and surfaces the right one for right now.</p>
+            </div>
+          </article>
+
+          <article class="feat-card">
+            <div class="phone-wrap">
+              <div class="phone-frame">
+                <img src="images/feat-focusshield.png" alt="Focus Shield" loading="lazy" />
+              </div>
+              <img class="feat-bunny" src="images/coolbunny.png" alt="" aria-hidden="true" />
+            </div>
+            <div class="feat-text">
+              <h3>Block distractions on command</h3>
+              <p>Focus Shield locks out your most tempting apps during work sessions using Apple Screen Time.</p>
+            </div>
+          </article>
+
+          <article class="feat-card">
+            <div class="phone-wrap">
+              <div class="phone-frame">
+                <img src="images/feat-subtasks.png" alt="AI Subtasks" loading="lazy" />
+              </div>
+              <img class="feat-bunny feat-bunny--right" src="images/bunnycelebrating.png" alt="" aria-hidden="true" />
+            </div>
+            <div class="feat-text">
+              <h3>AI breaks the big stuff down</h3>
+              <p>Tap the sparkle button and AI instantly builds a step-by-step plan so you always know the next move.</p>
+            </div>
+          </article>
+
+          <article class="feat-card">
+            <div class="phone-wrap">
+              <div class="phone-frame">
+                <img src="images/feat-taskdetail.png" alt="Task Detail" loading="lazy" />
+              </div>
+              <img class="feat-bunny" src="images/bunnyclock.png" alt="" aria-hidden="true" />
+            </div>
+            <div class="feat-text">
+              <h3>Plan every detail that matters</h3>
+              <p>Set due dates, priority, difficulty, and time estimates so Addison can schedule around your real life.</p>
+            </div>
+          </article>
+
+          <article class="feat-card">
+            <div class="phone-wrap">
+              <div class="phone-frame">
+                <img src="images/feat-progress.png" alt="Progress" loading="lazy" />
+              </div>
+              <img class="feat-bunny feat-bunny--right" src="images/confettibunny.png" alt="" aria-hidden="true" />
+            </div>
+            <div class="feat-text">
+              <h3>Watch your momentum build</h3>
+              <p>Track your start rate, clarity score, and focus patterns. See exactly how you're getting better.</p>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="carousel-dots" id="carouselDots">
+          <button class="dot active" aria-label="Slide 1" data-index="0"></button>
+          <button class="dot" aria-label="Slide 2" data-index="1"></button>
+          <button class="dot" aria-label="Slide 3" data-index="2"></button>
+          <button class="dot" aria-label="Slide 4" data-index="3"></button>
+          <button class="dot" aria-label="Slide 5" data-index="4"></button>
+          <button class="dot" aria-label="Slide 6" data-index="5"></button>
+        </div>
+      </div>
+    </section>
 
     <footer class="footer">
       <div class="footer-inner">
@@ -554,6 +806,45 @@
   </div>
 
   <script>
+    // Typewriter effect for the subheadline adjective
+    (function () {
+      const el = document.getElementById('typedWord');
+      if (!el) return;
+      const words = ['simple.', 'fast.', 'easy.'];
+      const typeSpeed = 90;
+      const backSpeed = 55;
+      const holdAfterType = 1400;
+      const holdAfterDelete = 250;
+      let wordIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      function tick() {
+        const current = words[wordIndex];
+        if (!deleting) {
+          charIndex++;
+          el.textContent = current.slice(0, charIndex);
+          if (charIndex === current.length) {
+            deleting = true;
+            setTimeout(tick, holdAfterType);
+            return;
+          }
+          setTimeout(tick, typeSpeed);
+        } else {
+          charIndex--;
+          el.textContent = current.slice(0, charIndex);
+          if (charIndex === 0) {
+            deleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(tick, holdAfterDelete);
+            return;
+          }
+          setTimeout(tick, backSpeed);
+        }
+      }
+      tick();
+    })();
+
     const header = document.querySelector('.header');
 
     window.addEventListener('scroll', () => {
@@ -577,6 +868,27 @@
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeAndroidModal();
+    });
+
+    // Feature carousel dots
+    const featTrack = document.getElementById('featuresTrack');
+    const dots = document.querySelectorAll('#carouselDots .dot');
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const card = featTrack.querySelectorAll('.feat-card')[+dot.dataset.index];
+        featTrack.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+      });
+    });
+
+    featTrack.addEventListener('scroll', () => {
+      const cards = featTrack.querySelectorAll('.feat-card');
+      let closest = 0, minDist = Infinity;
+      cards.forEach((card, i) => {
+        const dist = Math.abs(card.offsetLeft - featTrack.scrollLeft);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      dots.forEach((d, i) => d.classList.toggle('active', i === closest));
     });
 
     async function handleAndroidSignup(e) {
