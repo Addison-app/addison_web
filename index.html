@@ -403,10 +403,10 @@
     }
 
     .story-card {
-    background: var(--card-bg);
-    color: var(--card-text);
+    color: var(--text-dark);
+    border: 3px solid var(--card-bg);
     border-radius: 28px;
-    padding: 56px;
+    padding: 44px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -419,14 +419,45 @@
     }
 
     .story-media {
-    display: flex;
-    justify-content: center;
+    position: relative;
+    width: min(100%, 300px);
+    margin: 0 auto;
     }
 
-    .story-media img {
-    width: min(100%, 300px);
+    /* Clickable screenshot with hover grow */
+    .story-shot {
+    display: block;
+    border-radius: 20px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .story-shot img {
+    width: 100%;
     height: auto;
     border-radius: 20px;
+    display: block;
+    }
+
+    .story-shot:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Addison character peeking on each card */
+    .story-bunny {
+    position: absolute;
+    width: clamp(64px, 9vw, 96px);
+    height: auto;
+    right: -20px;
+    bottom: -16px;
+    pointer-events: none;
+    z-index: 2;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.18));
+    }
+
+    .story-card:nth-child(even) .story-bunny {
+    right: auto;
+    left: -20px;
     }
 
     .story-text {
@@ -461,16 +492,11 @@
     .story-keywords li {
     font-size: 0.82rem;
     font-weight: 600;
+    color: #555;
     padding: 7px 14px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.22);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    }
-
-    /* Light-background cards need darker chips */
-    .story-card.is-light .story-keywords li {
-    background: rgba(0, 0, 0, 0.07);
-    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     @media (max-width: 820px) {
@@ -817,18 +843,21 @@
     <section class="stories-section">
       <div class="stories-inner">
         <h2 class="stories-heading">How Addison helps you get unstuck</h2>
-        <p class="stories-sub">From overwhelmed to done — one small step at a time.</p>
+        <p class="stories-sub">From overwhelmed to done, one small step at a time.</p>
 
         <div class="stories-list">
 
           <!-- Dump It Out — golden yellow -->
-          <article class="story-card is-light" style="--card-bg:#F4C20D; --card-text:#1f1500;">
+          <article class="story-card" style="--card-bg:#F4C20D;">
             <div class="story-media">
-              <img src="images/story-dump-it-out.jpg" alt="Dump It Out — capture every task in one clear list" loading="lazy" />
+              <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
+                <img src="images/story-dump-it-out.jpg" alt="Dump It Out: capture every task in one clear list" loading="lazy" />
+              </a>
+              <img class="story-bunny" src="images/confettibunny.png" alt="" aria-hidden="true" />
             </div>
             <div class="story-text">
               <h3>Dump It Out</h3>
-              <p>Get every task out of your head and into one trusted list. No more mental clutter or forgotten to-dos — capture it all in seconds.</p>
+              <p>Get every task out of your head and into one trusted list. No more mental clutter or forgotten to-dos. Capture it all in seconds.</p>
               <ul class="story-keywords">
                 <li>brain dump</li>
                 <li>overwhelmed</li>
@@ -840,9 +869,12 @@
           </article>
 
           <!-- Break It Down — green -->
-          <article class="story-card" style="--card-bg:#3C8C1E; --card-text:#ffffff;">
+          <article class="story-card" style="--card-bg:#3C8C1E;">
             <div class="story-media">
-              <img src="images/story-break-it-down.jpg" alt="Break It Down — split big tasks into small subtasks" loading="lazy" />
+              <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
+                <img src="images/story-break-it-down.jpg" alt="Break It Down: split big tasks into small subtasks" loading="lazy" />
+              </a>
+              <img class="story-bunny" src="images/bunnyclock.png" alt="" aria-hidden="true" />
             </div>
             <div class="story-text">
               <h3>Break It Down</h3>
@@ -858,13 +890,16 @@
           </article>
 
           <!-- Fast Prioritization — lime green -->
-          <article class="story-card is-light" style="--card-bg:#A6C44A; --card-text:#1c2400;">
+          <article class="story-card" style="--card-bg:#A6C44A;">
             <div class="story-media">
-              <img src="images/story-fast-prioritization.jpg" alt="Fast Prioritization — sort tasks by deadline or quick wins" loading="lazy" />
+              <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
+                <img src="images/story-fast-prioritization.jpg" alt="Fast Prioritization: sort tasks by deadline or quick wins" loading="lazy" />
+              </a>
+              <img class="story-bunny" src="images/dancingbunny.png" alt="" aria-hidden="true" />
             </div>
             <div class="story-text">
               <h3>Fast Prioritization</h3>
-              <p>Not sure what to do first? Switch modes and let Addison sort your list by deadline, energy, or quick wins — no more staring at a wall of tasks.</p>
+              <p>Not sure what to do first? Switch modes and let Addison sort your list by deadline, energy, or quick wins, so you never stare at a wall of tasks.</p>
               <ul class="story-keywords">
                 <li>what should I do first</li>
                 <li>prioritize tasks</li>
@@ -876,13 +911,16 @@
           </article>
 
           <!-- One Task — red -->
-          <article class="story-card" style="--card-bg:#C0392B; --card-text:#ffffff;">
+          <article class="story-card" style="--card-bg:#C0392B;">
             <div class="story-media">
-              <img src="images/story-one-task.jpg" alt="One Task — focus on a single task with a timer" loading="lazy" />
+              <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
+                <img src="images/story-one-task.jpg" alt="One Task: focus on a single task with a timer" loading="lazy" />
+              </a>
+              <img class="story-bunny" src="images/bunnypointingforward.png" alt="" aria-hidden="true" />
             </div>
             <div class="story-text">
               <h3>One Task</h3>
-              <p>See just one task at a time, with a built-in timer and gentle nudges. Less overwhelm, more done — the rest can wait.</p>
+              <p>See just one task at a time, with a built-in timer and gentle nudges. Less overwhelm, more done. The rest can wait.</p>
               <ul class="story-keywords">
                 <li>focus on one thing</li>
                 <li>procrastination</li>
@@ -894,9 +932,12 @@
           </article>
 
           <!-- Block Distractions — orange -->
-          <article class="story-card is-light" style="--card-bg:#EFA323; --card-text:#241500;">
+          <article class="story-card" style="--card-bg:#EFA323;">
             <div class="story-media">
-              <img src="images/story-block-distractions.jpg" alt="Block Distractions — Focus Mode to stay locked in" loading="lazy" />
+              <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
+                <img src="images/story-block-distractions.jpg" alt="Block Distractions: Focus Mode to stay locked in" loading="lazy" />
+              </a>
+              <img class="story-bunny" src="images/coolbunny.png" alt="" aria-hidden="true" />
             </div>
             <div class="story-text">
               <h3>Block Distractions</h3>
@@ -912,9 +953,12 @@
           </article>
 
           <!-- Remove Barriers — purple -->
-          <article class="story-card" style="--card-bg:#7A2FE0; --card-text:#ffffff;">
+          <article class="story-card" style="--card-bg:#7A2FE0;">
             <div class="story-media">
-              <img src="images/story-remove-barriers.jpg" alt="Remove Barriers — set priority, difficulty and duration" loading="lazy" />
+              <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
+                <img src="images/story-remove-barriers.jpg" alt="Remove Barriers: set priority, difficulty and duration" loading="lazy" />
+              </a>
+              <img class="story-bunny" src="images/bunnycelebrating.png" alt="" aria-hidden="true" />
             </div>
             <div class="story-text">
               <h3>Remove Barriers</h3>
@@ -930,9 +974,12 @@
           </article>
 
           <!-- Know Your Stats — sky blue -->
-          <article class="story-card is-light" style="--card-bg:#5BB7E5; --card-text:#06243a;">
+          <article class="story-card" style="--card-bg:#5BB7E5;">
             <div class="story-media">
-              <img src="images/story-know-your-stats.jpg" alt="Know Your Stats — track streaks and progress" loading="lazy" />
+              <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
+                <img src="images/story-know-your-stats.jpg" alt="Know Your Stats: track streaks and progress" loading="lazy" />
+              </a>
+              <img class="story-bunny" src="images/dancingbunny.png" alt="" aria-hidden="true" />
             </div>
             <div class="story-text">
               <h3>Know Your Stats</h3>
@@ -1094,6 +1141,61 @@
   </div>
 
   <script>
+    // ---- Google Analytics event tracking ----
+    function trackEvent(name, params) {
+      if (typeof gtag === 'function') gtag('event', name, params || {});
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Primary "Download on Mobile" CTA -> App Store
+      const primaryCta = document.querySelector('.cta-group .btn-primary');
+      if (primaryCta) primaryCta.addEventListener('click', function () {
+        trackEvent('download_click', { store: 'app_store', location: 'hero_primary_cta' });
+      });
+
+      // App Store badge -> App Store
+      const appStoreBadge = document.querySelector('.app-store-badge-link');
+      if (appStoreBadge) appStoreBadge.addEventListener('click', function () {
+        trackEvent('download_click', { store: 'app_store', location: 'hero_badge' });
+      });
+
+      // Google Play badge (Android not live yet -> opens waitlist modal)
+      const playBadge = document.querySelector('.google-play-badge-link');
+      if (playBadge) playBadge.addEventListener('click', function () {
+        trackEvent('google_play_click', { store: 'google_play', location: 'hero_badge' });
+      });
+
+      // Header nav links
+      document.querySelectorAll('.nav .nav-link').forEach(function (link) {
+        link.addEventListener('click', function () {
+          trackEvent('nav_click', { label: link.textContent.trim().toLowerCase() });
+        });
+      });
+
+      // Footer social links
+      document.querySelectorAll('.footer-social a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          trackEvent('social_click', { network: (link.getAttribute('aria-label') || '').toLowerCase() });
+        });
+      });
+
+      // Footer legal/account links
+      document.querySelectorAll('.footer-links a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          trackEvent('footer_link_click', { label: link.textContent.trim().toLowerCase() });
+        });
+      });
+
+      // Feature screenshots -> App Store
+      document.querySelectorAll('.story-card .story-shot').forEach(function (link) {
+        link.addEventListener('click', function () {
+          const card = link.closest('.story-card');
+          const feature = card && card.querySelector('h3') ? card.querySelector('h3').textContent.trim().toLowerCase() : '';
+          trackEvent('download_click', { store: 'app_store', location: 'feature_screenshot', feature: feature });
+        });
+      });
+    });
+
     // Toggle the "See how it works" section. Set to true to show it again.
     const SHOW_HOW_IT_WORKS = false;
     (function () {
