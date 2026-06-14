@@ -468,7 +468,7 @@
 
     .story-text h3 {
     margin: 0;
-    color: var(--card-bg);
+    color: var(--title-color, var(--card-bg));
     font-size: clamp(1.6rem, 3vw, 2.1rem);
     font-weight: 800;
     line-height: 1.1;
@@ -849,7 +849,7 @@
         <div class="stories-list">
 
           <!-- Dump It Out — golden yellow -->
-          <article class="story-card" style="--card-bg:#F4C20D;">
+          <article class="story-card" style="--card-bg:#F4C20D; --title-color:#A07A00;">
             <div class="story-media">
               <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
                 <img src="images/story-dump-it-out.jpg" alt="Dump It Out: capture every task in one clear list" loading="lazy" />
@@ -891,7 +891,7 @@
           </article>
 
           <!-- Fast Prioritization — lime green -->
-          <article class="story-card" style="--card-bg:#A6C44A;">
+          <article class="story-card" style="--card-bg:#A6C44A; --title-color:#5E7A1E;">
             <div class="story-media">
               <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
                 <img src="images/story-fast-prioritization.jpg" alt="Fast Prioritization: sort tasks by deadline or quick wins" loading="lazy" />
@@ -975,7 +975,7 @@
           </article>
 
           <!-- Know Your Stats — sky blue -->
-          <article class="story-card" style="--card-bg:#5BB7E5;">
+          <article class="story-card" style="--card-bg:#5BB7E5; --title-color:#1F86B8;">
             <div class="story-media">
               <a class="story-shot" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
                 <img src="images/story-know-your-stats.jpg" alt="Know Your Stats: track streaks and progress" loading="lazy" />
