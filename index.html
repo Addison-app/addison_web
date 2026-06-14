@@ -118,9 +118,15 @@
     .hero-wrap {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    min-height: calc(100vh - 84px); /* fill viewport below the header */
     padding: 0;
     margin: 0;
+    }
+
+    /* Toggle for the "See how it works" section */
+    .section-hidden {
+    display: none !important;
     }
 
     /* HERO — flush with header */
@@ -664,7 +670,8 @@
       </section>
     </main>
 
-    <section class="features-section">
+    <!-- Toggle this section on/off via SHOW_HOW_IT_WORKS in the script below -->
+    <section class="features-section section-hidden" id="howItWorks">
       <div class="features-inner">
         <h2 class="features-heading">See how it works</h2>
         <p class="features-sub">Built for brains that work a little differently.</p>
@@ -806,6 +813,13 @@
   </div>
 
   <script>
+    // Toggle the "See how it works" section. Set to true to show it again.
+    const SHOW_HOW_IT_WORKS = false;
+    (function () {
+      const section = document.getElementById('howItWorks');
+      if (section) section.classList.toggle('section-hidden', !SHOW_HOW_IT_WORKS);
+    })();
+
     // Typewriter effect for the subheadline adjective
     (function () {
       const el = document.getElementById('typedWord');
