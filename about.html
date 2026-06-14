@@ -313,6 +313,7 @@
     }
 
     .member {
+    display: block;
     border: 1.5px solid #ddd;
     border-radius: 12px;
     padding: 16px;
@@ -320,6 +321,14 @@
     font-weight: 600;
     color: var(--text-dark);
     background: #fafafa;
+    text-decoration: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .member:hover {
+    border-color: var(--app-red);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
     }
 
     /* CEO highlight */
@@ -329,12 +338,24 @@
     }
 
     .member-name {
+    display: block;
     font-weight: 700;
     }
 
+    /* Role is revealed only on hover/focus */
     .member-role {
+    display: block;
+    margin-top: 4px;
     color: var(--app-red);
     font-weight: 700;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    }
+
+    .member:hover .member-role,
+    .member:focus-visible .member-role {
+    opacity: 1;
     }
 
     .connect-links {
@@ -564,17 +585,40 @@
         <div class="about-section">
         <div class="team-grid">
 
-            <div class="member ceo">
-            <div class="member-name">
-                E. Danielle Malingue, <span class="member-role">CEO</span>
-            </div>
+            <a class="member ceo" href="https://www.linkedin.com/in/eunice-danielle" target="_blank" rel="noopener noreferrer">
+                <span class="member-name">E. Danielle Malingue</span>
+                <span class="member-role">CEO</span>
+            </a>
+
+            <div class="member">
+                <span class="member-name">Donovan Vickers</span>
+                <span class="member-role">Sound Design Director</span>
             </div>
 
-            <div class="member">Maia Nkonabang</div>
-            <div class="member">Dylan Gatua</div>
-            <div class="member">Rebecca Lole</div>
-            <div class="member">Andrea Ongomefen</div>
-            <div class="member">Kyra Godoy</div>
+            <a class="member" href="https://www.linkedin.com/in/chiara-maia-nkonabang-8b84b5220/" target="_blank" rel="noopener noreferrer">
+                <span class="member-name">Maia Nkonabang</span>
+                <span class="member-role">CTO</span>
+            </a>
+
+            <a class="member" href="https://www.linkedin.com/in/dylan-ngare-gatua/" target="_blank" rel="noopener noreferrer">
+                <span class="member-name">Dylan Gatua</span>
+                <span class="member-role">CTO</span>
+            </a>
+
+            <a class="member" href="https://www.linkedin.com/in/rebecca-lole-a18614416/" target="_blank" rel="noopener noreferrer">
+                <span class="member-name">Rebecca Lole</span>
+                <span class="member-role">Marketing Director Intern</span>
+            </a>
+
+            <a class="member" href="https://www.linkedin.com/in/andreaongomefen/" target="_blank" rel="noopener noreferrer">
+                <span class="member-name">Andrea Ongomefen</span>
+                <span class="member-role">Rotational Intern</span>
+            </a>
+
+            <a class="member" href="https://www.linkedin.com/in/kiirakyra/" target="_blank" rel="noopener noreferrer">
+                <span class="member-name">Kyra Godoy</span>
+                <span class="member-role">CDO</span>
+            </a>
 
         </div>
         <div class="about-text">
