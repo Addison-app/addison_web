@@ -11,7 +11,7 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - Addison</title>
+  <title>Contact - Addison</title>
   <link rel="icon" href="images/favicon/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16.png">
@@ -95,6 +95,10 @@
       max-width: var(--max-width);
       margin: 0 auto;
       padding: 4px 15px 30px;
+    }
+
+    .contact-page {
+      padding: 64px 0 96px;
     }
 
     .about-title {
@@ -762,114 +766,59 @@
 
   <!-- MAIN -->
     <main class="about-wrap">
-        <div class="about-top">
+        <section class="contact-page">
+            <div class="contact-wrap">
+                <span class="contact-eyebrow">Get in touch</span>
+                <h2 class="contact-heading">Drop us a line.</h2>
+                <p class="contact-sub">
+                    Questions, feedback, or ideas you want to share? Tell us what's on your mind
+                    and a real person on the Addison team will write back.
+                </p>
 
-        <h1 class="about-title">About Us</h1>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-info-label">Email</div>
+                        <a class="contact-info-value" href="mailto:myaddisonapp@gmail.com">myaddisonapp@gmail.com</a>
+                        <p class="contact-info-note">Prefer email? Reach out directly and we'll get back to you as soon as we can.</p>
 
-        <div class="about-tabs" role="tablist" aria-label="About sections">
-            <button class="tab active" role="tab" aria-selected="true" aria-controls="mission-panel" id="mission-tab" data-tab="mission" type="button">Mission</button>
-            <button class="tab" role="tab" aria-selected="false" aria-controls="team-panel" id="team-tab" data-tab="team" type="button">Team</button>
-        </div>
-        </div>
+                        <div class="contact-info-label" style="margin-top:24px;">Follow along</div>
+                        <div class="connect-links">
+                            <a href="https://www.instagram.com/myaddisonapp" target="_blank" rel="noopener noreferrer" class="connect-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <circle cx="17.5" cy="6.5" r="1.5"></circle>
+                                </svg>
+                                Instagram
+                            </a>
+                            <a href="https://www.tiktok.com/@myaddisonapp" target="_blank" rel="noopener noreferrer" class="connect-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                                </svg>
+                                TikTok
+                            </a>
+                        </div>
+                    </div>
 
-    <section class="tab-panel active" id="mission-panel" role="tabpanel" aria-labelledby="mission-tab">
-        <div class="about-section">
-        <div class="about-art">
-            <img src="images/cluster2.webp" alt="Mission illustration">
-        </div>
-        <div class="about-text">
-            <h2>Small Steps Big Wins In A Busy World.</h2>
-            <p>
-            Many people who struggle with executive function often find traditional to-do lists overwhelming because they don’t know where to start. This leads to procrastination, a snowball effect of unfinished tasks, and increased stress.
-            </p>
-            <p>
-            Addison helps you <strong><em>plan</em></strong>, <strong><em>focus</em></strong>, and <strong><em>follow through</em></strong> by giving you tools
-            that support your executive function in real time.
-            </p>
-        </div>
-        </div>
-    </section>
-
-
-    <section class="tab-panel" id="team-panel" role="tabpanel" aria-labelledby="team-tab" hidden>
-        <div class="team-intro">
-            <h2>Built with care.</h2>
-            <p>
-            Our team is focused on designing tools that feel calm, useful, and supportive.
-            We care about thoughtful product design, accessibility, and creating systems
-            that meet people where they are.
-            </p>
-        </div>
-
-        <div class="team-grid">
-
-            <a class="member" href="https://www.linkedin.com/in/eunice-danielle" target="_blank" rel="noopener noreferrer">
-                <div class="member-avatar" style="--avatar-bg:#b71c1c;">
-                    <span class="member-initials">DM</span>
-                    <img src="images/team/danielle.jpg" alt="E. Danielle Malingue" loading="lazy" onerror="this.remove()">
+                    <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)">
+                        <label>
+                            Your name
+                            <input type="text" id="contactName" placeholder="What should we call you?" required>
+                        </label>
+                        <label>
+                            Email
+                            <input type="email" id="contactEmail" placeholder="you@example.com" required autocomplete="email">
+                        </label>
+                        <label>
+                            Message
+                            <textarea id="contactMessage" placeholder="Tell us what's on your mind…" required></textarea>
+                        </label>
+                        <button type="submit" class="contact-send">Send message</button>
+                        <p class="contact-success" id="contactSuccess">Thanks! Your email app should open with your message ready to send.</p>
+                    </form>
                 </div>
-                <span class="member-name">E. Danielle Malingue</span>
-                <span class="member-role">CEO</span>
-            </a>
-
-            <div class="member">
-                <div class="member-avatar" style="--avatar-bg:#7A2FE0;">
-                    <span class="member-initials">DV</span>
-                    <img src="images/team/donovan.jpg" alt="Donovan Vickers" loading="lazy" onerror="this.remove()">
-                </div>
-                <span class="member-name">Donovan Vickers</span>
-                <span class="member-role">Sound Design Director</span>
             </div>
-
-            <a class="member" href="https://www.linkedin.com/in/chiara-maia-nkonabang-8b84b5220/" target="_blank" rel="noopener noreferrer">
-                <div class="member-avatar" style="--avatar-bg:#3C8C1E;">
-                    <span class="member-initials">MN</span>
-                    <img src="images/team/maia.jpg" alt="Maia Nkonabang" loading="lazy" onerror="this.remove()">
-                </div>
-                <span class="member-name">Maia Nkonabang</span>
-                <span class="member-role">CTO</span>
-            </a>
-
-            <a class="member" href="https://www.linkedin.com/in/dylan-ngare-gatua/" target="_blank" rel="noopener noreferrer">
-                <div class="member-avatar" style="--avatar-bg:#1F86B8;">
-                    <span class="member-initials">DG</span>
-                    <img src="images/team/dylan.jpg" alt="Dylan Gatua" loading="lazy" onerror="this.remove()">
-                </div>
-                <span class="member-name">Dylan Gatua</span>
-                <span class="member-role">CTO</span>
-            </a>
-
-            <a class="member" href="https://www.linkedin.com/in/rebecca-lole-a18614416/" target="_blank" rel="noopener noreferrer">
-                <div class="member-avatar" style="--avatar-bg:#EFA323;">
-                    <span class="member-initials">RL</span>
-                    <img src="images/team/rebecca.jpg" alt="Rebecca Lole" loading="lazy" onerror="this.remove()">
-                </div>
-                <span class="member-name">Rebecca Lole</span>
-                <span class="member-role">Marketing Director Intern</span>
-            </a>
-
-            <a class="member" href="https://www.linkedin.com/in/andreaongomefen/" target="_blank" rel="noopener noreferrer">
-                <div class="member-avatar" style="--avatar-bg:#C0392B;">
-                    <span class="member-initials">AO</span>
-                    <img src="images/team/andrea.jpg" alt="Andrea Ongomefen" loading="lazy" onerror="this.remove()">
-                </div>
-                <span class="member-name">Andrea Ongomefen</span>
-                <span class="member-role">Rotational Intern</span>
-            </a>
-
-            <a class="member" href="https://www.linkedin.com/in/kiirakyra/" target="_blank" rel="noopener noreferrer">
-                <div class="member-avatar" style="--avatar-bg:#5E7A1E;">
-                    <span class="member-initials">KG</span>
-                    <img src="images/team/kyra.jpg" alt="Kyra Godoy" loading="lazy" onerror="this.remove()">
-                </div>
-                <span class="member-name">Kyra Godoy</span>
-                <span class="member-role">CDO</span>
-            </a>
-
-        </div>
-    </section>
-
-
+        </section>
     </main>
 
   <!-- FOOTER -->
