@@ -217,6 +217,11 @@
     line-height: 1.05;
     }
 
+    /* Desktop headline by default, swap to mobile copy on phones */
+    .headline-mobile {
+    display: none;
+    }
+
     .subcopy {
     margin: 0;
     color: #666;
@@ -279,7 +284,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 28px;
     margin-top: 8px;
     }
 
@@ -288,7 +293,7 @@
     }
 
     .app-store-badge {
-    height: 60px;
+    height: 72px;
     width: auto;
     }
 
@@ -301,7 +306,7 @@
     }
 
     .google-play-badge {
-    height: 48px;
+    height: 72px;
     width: auto;
     }
 
@@ -915,6 +920,14 @@
         max-width: 375px;
     }
 
+    .headline-desktop {
+        display: none;
+    }
+
+    .headline-mobile {
+        display: inline;
+    }
+
     .hero {
         padding: 0;
     }
@@ -982,7 +995,10 @@
         </div>
 
         <div class="hero-copy">
-          <h1 class="headline">For everyone who knows what to do — and still can't start.</h1>
+          <h1 class="headline">
+            <span class="headline-desktop">Your clear daily to-do list that helps you plan, focus, and follow through.</span>
+            <span class="headline-mobile">For everyone who knows what to do but still can't start.</span>
+          </h1>
           <h2 class="subheadline">Executive function made <span class="subheadline-word" id="typedWord"></span><span class="subheadline-cursor" aria-hidden="true"></span></h2>
           <p class="subcopy"> Get started in seconds.</p>
 
