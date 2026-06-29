@@ -15,6 +15,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Addison: Productivity App, To-Do List &amp; Daily Planner for Focus</title>
 
+  <!-- Glacial Indifference font (SIL OFL) via jsDelivr -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-glacial-indifference/index.css" />
+
   <!-- SEO -->
   <meta name="description" content="Addison is a productivity app and to-do list app that works like a daily planner, focus app, and habit tracker. Brain dump tasks, break them down, prioritize, and follow through — executive function made simple." />
   <meta name="keywords" content="productivity app, task planner, to-do list app, daily planner, routine planner, habit tracker, student planner, focus app, task manager, life planner, digital planner, goal planner, time management app, routine app, study planner, brain dump app, task breakdown app, priority planner, calendar planner, personal organizer, self management app, routine builder, habit loop" />
@@ -131,6 +135,71 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    }
+
+    /* UPDATE ANNOUNCEMENT BANNER */
+    .update-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    width: 100%;
+    background: var(--app-red);
+    color: #fff;
+    padding: 11px 44px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    transition: background 0.2s ease;
+    }
+
+    .update-banner:hover {
+    background: var(--app-red-hover);
+    }
+
+    .update-banner.dismissed {
+    display: none;
+    }
+
+    .update-banner-tag {
+    display: inline-block;
+    background: #fff;
+    color: var(--app-red);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-right: 6px;
+    vertical-align: middle;
+    }
+
+    .update-banner-close {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.85;
+    }
+
+    .update-banner-close:hover {
+    opacity: 1;
+    }
+
+    @media (max-width: 640px) {
+    .update-banner {
+        font-size: 0.78rem;
+        padding: 9px 40px;
+    }
     }
 
     /* HEADER — shrinks exactly to logo */
@@ -286,10 +355,12 @@
     .headline {
     margin: 0;
     max-width: 760px;
-    color: var(--text-dark);
-    font-size: clamp(1.7rem, 5vw, 3rem);
-    font-weight: 600;
-    line-height: 1.05;
+    color: #222;
+    font-family: 'Glacial Indifference', Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: clamp(3.8rem, 12vw, 7.5rem);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.06em;
     }
 
     /* Desktop headline by default, swap to mobile copy on phones */
@@ -300,6 +371,7 @@
     .subcopy {
     margin: 0;
     color: #666;
+    font-weight: 400;
     }
 
     .subheadline {
@@ -1114,6 +1186,13 @@
 </head>
 <body>
   <div class="page">
+    <a class="update-banner" id="updateBanner" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer">
+      <span class="update-banner-text">
+        <span class="update-banner-tag">New</span>
+        Now in Addison: a daily routine planner and distraction blocker to help you focus and follow through — update now →
+      </span>
+      <button class="update-banner-close" type="button" onclick="dismissUpdateBanner(event)" aria-label="Dismiss announcement">&times;</button>
+    </a>
     <header class="header">
       <div class="header-inner">
         <a class="brand" href="index.html" aria-label="Home">
@@ -1139,7 +1218,7 @@
         </div>
 
         <div class="hero-copy">
-          <h1 class="headline">One app for the way your brain actually works</h1>
+          <h1 class="headline">What's Your Next Move?</h1>
           <h3 class="subcopy">Addison is the productivity app for people who know what to do but still can't start. It's a to-do list app, daily planner, focus app, and routine tracker rolled into one calm, low-pressure system.</h3>
 
           <div class="cta-group">
@@ -1696,6 +1775,25 @@
         header.classList.remove('scrolled');
       }
     });
+
+    // Update announcement banner: dismiss + remember choice
+    function dismissUpdateBanner(e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      const banner = document.getElementById('updateBanner');
+      if (banner) banner.classList.add('dismissed');
+      try { localStorage.setItem('addisonUpdateBannerDismissed', '1'); } catch (_) {}
+      trackEvent('update_banner_dismiss');
+    }
+    (function () {
+      const banner = document.getElementById('updateBanner');
+      if (!banner) return;
+      let dismissed = false;
+      try { dismissed = localStorage.getItem('addisonUpdateBannerDismissed') === '1'; } catch (_) {}
+      if (dismissed) banner.classList.add('dismissed');
+      banner.addEventListener('click', function () {
+        trackEvent('update_banner_click', { update: 'daily_routine_distraction_blocker' });
+      });
+    })();
 
     function closeAndroidModal() {
       document.getElementById('androidModal').classList.remove('active');
