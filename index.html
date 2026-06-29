@@ -9,9 +9,80 @@
   gtag('js', new Date());
   gtag('config', 'G-RLTGQ1FW1C');
 </script>
+<!-- Retargeting pixels (Meta + TikTok) -->
+<script src="pixels.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Addison - Executive function made simple</title>
+  <title>Addison: Productivity App, To-Do List &amp; Daily Planner for Focus</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Addison is a productivity app and to-do list app that works like a daily planner, focus app, and habit tracker. Brain dump tasks, break them down, prioritize, and follow through — executive function made simple." />
+  <meta name="keywords" content="productivity app, task planner, to-do list app, daily planner, routine planner, habit tracker, student planner, focus app, task manager, life planner, digital planner, goal planner, time management app, routine app, study planner, brain dump app, task breakdown app, priority planner, calendar planner, personal organizer, self management app, routine builder, habit loop" />
+  <meta name="author" content="Addison" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://myaddison.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Addison" />
+  <meta property="og:title" content="Addison: Productivity App, To-Do List &amp; Daily Planner for Focus" />
+  <meta property="og:description" content="A productivity app and to-do list app that doubles as your daily planner, focus app, and habit tracker. Brain dump, break tasks down, prioritize, and follow through." />
+  <meta property="og:url" content="https://myaddison.app/" />
+  <meta property="og:image" content="https://myaddison.app/images/hero-phone.png" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Addison: Productivity App, To-Do List &amp; Daily Planner for Focus" />
+  <meta name="twitter:description" content="A productivity app and to-do list app that doubles as your daily planner, focus app, and habit tracker. Brain dump, break tasks down, prioritize, and follow through." />
+  <meta name="twitter:image" content="https://myaddison.app/images/hero-phone.png" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Addison",
+        "operatingSystem": "iOS",
+        "applicationCategory": "ProductivityApplication",
+        "description": "Addison is a productivity app and to-do list app that works as a daily planner, focus app, task manager, and habit tracker. It helps you brain dump tasks, break them down, prioritize, and follow through.",
+        "url": "https://myaddison.app/",
+        "image": "https://myaddison.app/images/hero-phone.png",
+        "downloadUrl": "https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "keywords": "productivity app, to-do list app, daily planner, focus app, task manager, habit tracker, study planner, brain dump app, priority planner",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Addison",
+          "url": "https://myaddison.app/"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "name": "Addison",
+        "url": "https://myaddison.app/",
+        "description": "Productivity app, to-do list, and daily planner for focus and follow-through."
+      },
+      {
+        "@type": "Organization",
+        "name": "Addison",
+        "url": "https://myaddison.app/",
+        "logo": "https://myaddison.app/images/favicon/android-chrome-512.png",
+        "sameAs": [
+          "https://www.instagram.com/myaddisonapp",
+          "https://www.tiktok.com/@myaddisonapp"
+        ]
+      }
+    ]
+  }
+  </script>
+
   <link rel="icon" href="images/favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16.png">
@@ -178,6 +249,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    }
+
+    .hero-phone-link {
+    display: block;
     }
 
     .hero-copy {
@@ -819,6 +894,73 @@
     transform: scale(1.25);
     }
 
+    /* SEO CONTENT SECTION */
+    .seo-section {
+    padding: 72px 0 88px;
+    background: #fafafa;
+    border-top: 1px solid var(--line);
+    }
+
+    .seo-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+    }
+
+    .seo-heading {
+    text-align: center;
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0;
+    }
+
+    .seo-lead {
+    text-align: center;
+    max-width: 760px;
+    margin: 18px auto 0;
+    color: #666;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.6;
+    }
+
+    .seo-grid {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    }
+
+    .seo-block h3 {
+    margin: 0 0 8px;
+    color: var(--app-red);
+    font-size: 1.15rem;
+    font-weight: 800;
+    }
+
+    .seo-block p {
+    margin: 0;
+    color: var(--text-dark);
+    font-size: 0.98rem;
+    line-height: 1.65;
+    }
+
+    .seo-tags {
+    margin: 44px auto 0;
+    max-width: 900px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.8;
+    }
+
+    @media (max-width: 720px) {
+    .seo-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    }
+
     /* FOOTER */
     .footer {
     border-top: 1px solid var(--line);
@@ -990,7 +1132,9 @@
       <section class="hero">
         <div class="hero-art">
           <div class="hero-art-inner">
-            <img src="images/hero-phone.png" alt="Addison app showing the current task to focus on" />
+            <a class="hero-phone-link" href="https://apps.apple.com/us/app/addison-whats-your-next-move/id6751917243" target="_blank" rel="noopener noreferrer" aria-label="Download Addison on the App Store">
+              <img src="images/hero-phone.png" alt="Addison app showing the current task to focus on" />
+            </a>
           </div>
         </div>
 
@@ -1174,7 +1318,8 @@
       </div>
     </section>
 
-    <section class="testimonials-section">
+    <!-- Toggle this section on/off via SHOW_TESTIMONIALS in the script below -->
+    <section class="testimonials-section section-hidden" id="testimonials">
       <div class="testimonials-inner">
         <h2 class="testimonials-heading">Loved by people who get things done</h2>
         <p class="testimonials-sub">Real momentum, one task at a time.</p>
@@ -1356,6 +1501,34 @@
       </div>
     </section>
 
+    <section class="seo-section">
+      <div class="seo-inner">
+        <h2 class="seo-heading">One app for the way your brain actually works</h2>
+        <p class="seo-lead">Addison is the productivity app for people who know what to do but still can't start. It's a to-do list app, daily planner, focus app, and habit tracker rolled into one calm, low-pressure system.</p>
+
+        <div class="seo-grid">
+          <div class="seo-block">
+            <h3>Plan your day</h3>
+            <p>Use Addison as a daily planner, task planner, and calendar planner to map out your day. It's the life planner and personal organizer that keeps every to-do in one trusted place — part digital planner, part goal planner, part time management app.</p>
+          </div>
+          <div class="seo-block">
+            <h3>Focus and follow through</h3>
+            <p>A focus app and task manager that shows you one task at a time. Brain dump everything, let the brain dump app sort it out, then use the task breakdown app and priority planner to find your very next move.</p>
+          </div>
+          <div class="seo-block">
+            <h3>Build routines that stick</h3>
+            <p>A routine planner, routine builder, and habit tracker built around a gentle habit loop. Set a repeatable routine, track the habit, and make it stick with soft discipline and low-pressure consistency.</p>
+          </div>
+          <div class="seo-block">
+            <h3>Start again, without shame</h3>
+            <p>Missed a day? Start again. Addison is the self management app and study planner that helps students and busy people restart without shame — a simple system you can come back to any time.</p>
+          </div>
+        </div>
+
+        <p class="seo-tags">Productivity app · task planner · to-do list app · daily planner · routine planner · habit tracker · student planner · focus app · task manager · life planner · digital planner · goal planner · time management app · routine app · study planner · brain dump app · task breakdown app · priority planner · calendar planner · personal organizer · self management app · routine builder · habit loop</p>
+      </div>
+    </section>
+
     <footer class="footer">
       <div class="footer-inner">
         <div class="footer-left">
@@ -1418,6 +1591,12 @@
         trackEvent('download_click', { store: 'app_store', location: 'hero_badge' });
       });
 
+      // Hero phone image -> App Store
+      const heroPhone = document.querySelector('.hero-phone-link');
+      if (heroPhone) heroPhone.addEventListener('click', function () {
+        trackEvent('download_click', { store: 'app_store', location: 'hero_phone' });
+      });
+
       // Google Play badge (Android not live yet -> opens waitlist modal)
       const playBadge = document.querySelector('.google-play-badge-link');
       if (playBadge) playBadge.addEventListener('click', function () {
@@ -1460,6 +1639,13 @@
     (function () {
       const section = document.getElementById('howItWorks');
       if (section) section.classList.toggle('section-hidden', !SHOW_HOW_IT_WORKS);
+    })();
+
+    // Toggle the testimonials/reviews section. Set to true once you have real reviews.
+    const SHOW_TESTIMONIALS = false;
+    (function () {
+      const section = document.getElementById('testimonials');
+      if (section) section.classList.toggle('section-hidden', !SHOW_TESTIMONIALS);
     })();
 
     // Typewriter effect for the subheadline adjective

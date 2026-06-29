@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Block nothing — let search engines index the whole site
+Sitemap: https://myaddison.app/sitemap.xml
